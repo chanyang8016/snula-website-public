@@ -1,0 +1,166 @@
+﻿<style>
+.arch{--ink:#f5f2ec;--mid:#c9c4ba;--dim:#9d978c;--line:rgba(245,242,236,.12);--card:#24201a;--acc:#BE8134;--acc2:#d9a05b;color:var(--ink);max-width:900px;font-family:"Noto Sans KR",system-ui,sans-serif}
+.arch *{box-sizing:border-box}
+.arch .a-lead{font-size:13.5px;color:var(--dim);line-height:1.7;margin:0 0 34px;letter-spacing:.01em}
+.arch .a-h2{font-size:19px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em;color:var(--ink)}
+.arch .a-sub{font-size:14px;color:var(--mid);line-height:1.7;margin:0 0 16px}
+.arch .tr{margin:0 0 52px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+.arch .tr-chart{width:100%;margin:6px 0 0}
+.arch .tr-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.arch .tr-chart .grid{stroke:var(--line);stroke-width:1}
+.arch .tr-chart .gl{fill:var(--dim);font-size:9.5px}
+.arch .tr-chart .xl{fill:var(--dim);font-size:10px;letter-spacing:.02em}
+.arch .tr-chart .ln{fill:none;stroke:#6b665e;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;opacity:.7;transition:opacity .2s,stroke-width .2s}
+.arch .tr-chart .ln.up{stroke:var(--acc);stroke-width:2.2;opacity:1}
+.arch .tr-chart .pt{fill:#1e1b17;stroke:#6b665e;stroke-width:1.5;opacity:.7}
+.arch .tr-chart .pt.up{stroke:var(--acc);stroke-width:2;fill:var(--acc)}
+.arch .tr-chart .lb{fill:var(--dim);font-size:10.5px}
+.arch .tr-chart .lb.up{fill:var(--acc2);font-weight:700}
+.arch .tr-chart .lb b{font-weight:700}
+.arch .tr-chart g.s:hover .ln{opacity:1;stroke-width:2.6}
+.arch .tr-chart g.s:hover .lb{fill:var(--ink)}
+.arch .tr-chart .ln{stroke-dasharray:1;stroke-dashoffset:1;animation:snula-draw 1.4s cubic-bezier(.2,.7,.2,1) forwards}
+.arch .tr-chart .ln.up{animation-duration:1.8s;animation-delay:.15s}
+@keyframes snula-draw{to{stroke-dashoffset:0}}
+.arch .a-h2.lst{margin-bottom:16px}
+.arch .a-ctrl{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;margin:0 0 4px}
+.arch .a-tabs{display:flex;flex-wrap:wrap;gap:0 22px}
+.arch .a-tabs .chip{font-size:15px;font-weight:600;padding:8px 0 10px}
+.arch .a-opts{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.arch .a-opts .grp{display:inline-flex;align-items:center;gap:0 10px;white-space:nowrap}
+.arch .a-opts .grp + .grp{padding-left:16px;border-left:1px solid var(--line)}
+.arch .a-opts .chip{font-size:12.5px;padding:6px 0 8px}
+.arch .chip{font:inherit;line-height:1;color:var(--dim);background:none;border:0;border-bottom:1px solid transparent;border-radius:0;cursor:pointer;transition:color .18s,border-color .18s}
+.arch .chip:hover{color:var(--ink)}
+.arch .chip.on{color:var(--ink);border-bottom-color:var(--acc)}
+.arch .a-panel{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.arch .a-ph{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.arch .a-ph b{font-size:14.5px;font-weight:700;transition:opacity .2s}
+.arch .a-ph span{font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums}
+.arch .a-scroll{max-height:560px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#4a463f #1e1b17;transition:opacity .22s ease,transform .22s ease}
+.arch .a-scroll.sw{opacity:0;transform:translateY(6px)}
+.arch .a-scroll::-webkit-scrollbar{width:8px}
+.arch .a-scroll::-webkit-scrollbar-track{background:#1e1b17}
+.arch .a-scroll::-webkit-scrollbar-thumb{background:#4a463f;border-radius:4px;border:2px solid #1e1b17}
+.arch .a-scroll::-webkit-scrollbar-thumb:hover{background:#5d574e}
+.arch .a-it{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 14px 14px 2px;border-bottom:1px solid var(--line)}
+.arch .a-it:last-child{border-bottom:0}
+.arch .a-it.in{opacity:0;transform:translateY(8px);animation:snula-in .42s ease forwards;animation-delay:var(--d,0ms)}
+@keyframes snula-in{to{opacity:1;transform:none}}
+.arch .a-yr{font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums;padding-top:2px}
+.arch .a-yr em{display:block;font-style:normal;font-size:10.5px;color:#8a8479;margin-top:3px}
+.arch .a-yr em.dr{color:var(--acc)}
+.arch .a-t{font-size:14px;line-height:1.55;color:var(--ink);text-decoration:none;transition:color .15s}
+.arch .a-t:hover{color:var(--acc2)}
+.arch .a-m{font-size:12px;color:var(--dim);margin-top:4px}
+.arch .a-empty{padding:28px 0;font-size:13px;color:var(--dim)}
+.arch .a-note{font-size:11.5px;color:var(--dim);line-height:1.7;margin:22px 0 0}
+@media (prefers-reduced-motion:reduce){.arch .tr-chart .ln{animation:none;stroke-dashoffset:0}.arch .a-it.in{animation:none;opacity:1;transform:none}.arch .a-scroll{transition:none}}
+@media (max-width:640px){
+.arch .tr-chart{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:#4a463f #1e1b17}
+.arch .tr-chart svg{min-width:760px}
+.arch .tr-chart .lb{font-size:9.5px}
+.arch .tr-chart .xl,.arch .tr-chart .gl{font-size:9px}
+.arch .a-ctrl{justify-content:flex-start;align-items:flex-start;gap:8px 18px}
+.arch .a-tabs{gap:0 16px}
+.arch .a-tabs .chip{font-size:14px}
+.arch .a-opts{width:100%;gap:6px 14px}
+.arch .a-opts .grp{gap:0 9px}
+.arch .a-opts .grp + .grp{padding-left:12px}
+.arch .a-it{grid-template-columns:44px 1fr;gap:10px;padding:12px 8px 12px 0}
+.arch .a-scroll{max-height:70vh}
+}
+.arch .a-h2.ug-h{margin-top:44px}
+.arch .a-sub.ug-s{margin:0 0 16px}
+.arch .a-yr em.ug{color:#a89a7c}
+</style>
+<h1 class="pg-h">Research</h1>
+<div class="arch">
+<p class="a-lead">조경학전공 학위논문 416편 · 1995년 이후</p>
+<div class="tr">
+<h2 class="a-h2">연도별 논문 키워드</h2>
+<p class="a-sub">기후·열환경, AI·데이터 분석, 원격탐사 연구가 2020년 이후 뚜렷하게 늘고 있습니다.</p>
+<div class="tr-chart" id="trChart"></div>
+</div>
+<h2 class="a-h2 lst">학위논문 목록</h2>
+<div class="a-ctrl" id="aCtrl"></div>
+<div class="a-panel"><div class="a-ph"><b id="phT"></b><span id="phN"></span></div><div class="a-scroll" id="aList"></div></div>
+<h2 class="a-h2 lst ug-h">학부 졸업논문</h2>
+<p class="a-sub ug-s">학부 졸업논문 가운데 국내외 학회지에 게재된 논문입니다.</p>
+<div class="a-panel">
+<div class="a-ph"><b>학회지 게재</b><span>14편</span></div>
+<div class="a-scroll ug-list"><div class="a-it in" style="--d:0ms"><div class="a-yr">2026<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.7780/kjrs.2026.42.1.5" target="_blank" rel="noopener">Estimating Topographically Corrected Photosynthetically Active Radiation at Hourly Intervals Using Breathing Earth System Simulator Radiation Model and GEO-KOMPSAT-2A Atmospheric Products</a><div class="a-m">안동진 · 지도 류영렬 · Korean J. Remote Sens. 42(1), 63-75</div></div></div><div class="a-it in" style="--d:38ms"><div class="a-yr">2025<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.7780/kjrs.2025.41.4.4" target="_blank" rel="noopener">Exploring the Temperature Response of Nighttime Ecosystem Respiration in a Deciduous Broadleaf Forest Using Long-Term Observations and Causal Shapley Value</a><div class="a-m">손명한 · 지도 류영렬 · Korean J. Remote Sens. 41(4): 669-681</div></div></div><div class="a-it in" style="--d:76ms"><div class="a-yr">2025<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.7780/kjrs.2025.41.1.4" target="_blank" rel="noopener">Tracking Vegetation Recovery after the 2019–2020 Wildfires in Tumbarumba, Australia, Using a High-Resolution Image Fusion Dataset</a><div class="a-m">강범준 · 지도 류영렬 · Korean J. Remote Sens. 41(1): 41-51</div></div></div><div class="a-it in" style="--d:114ms"><div class="a-yr">2025<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.7780/kjrs.2025.41.2.1.1" target="_blank" rel="noopener">Mapping Nine Dominant Tree Species in the Korean Peninsula Using U-Net and Harmonic Analysis of Sentinel-2 Imagery</a><div class="a-m">이주서 · 지도 류영렬 · Korean J. Remote Sens. 41(2): 243-260</div></div></div><div class="a-it in" style="--d:152ms"><div class="a-yr">2025<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.9715/KILA.2025.53.1.077" target="_blank" rel="noopener">보행 가로 경관 요소가 도시민의 우울감에 미치는 영향 분석-거시적 및 미시적 경관 요소와 도보 이용률을 고려하여</a><div class="a-m">김연우 · 지도 윤희연 · 한국조경학회지 53(1), 77-93</div></div></div><div class="a-it in" style="--d:190ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003101188" target="_blank" rel="noopener">A Comparative Study of Vegetation Phenology Using High-resolution Sentinel-2 Imagery and Topographically Corrected Vegetation Index</a><div class="a-m">유승헌 · 지도 류영렬 · Korean Journal of Agricultural and Forest Meteorology vol.26, no.2, pp. 89-102</div></div></div><div class="a-it in" style="--d:228ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003071579" target="_blank" rel="noopener">Exploring Branch Structure across Branch Orders and Species Using Terrestrial Laser Scanning and Quantitative Structure Model</a><div class="a-m">조성우 · 지도 류영렬 · Korean Journal of Agricultural and Forest Meteorology vol.26, no.1, pp. 31-52</div></div></div><div class="a-it in" style="--d:266ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003075767" target="_blank" rel="noopener">환경영향평가에서 조류 종풍부도 변화에 미치는 요인 고찰 연구</a><div class="a-m">문현빈 · 지도 이동근 · 환경영향평가 33(2), 64-73</div></div></div><div class="a-it in" style="--d:304ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.1016/j.ufug.2024.128305" target="_blank" rel="noopener">Assessing the impact of green infrastructure on thermal comfort in relation to humidity: A case study in Korea</a><div class="a-m">박병진 · 지도 이동근 · Urban Forestry &amp; Urban Greening 95, 128305</div></div></div><div class="a-it in" style="--d:342ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.17208/jkpa.2024.10.59.5.39" target="_blank" rel="noopener">음이항 회귀모형을 활용한 이주사유별 농촌지역의 인구유입 영향요인 비교분석 : 직업, 주택, 자연환경 요인을 고려하여</a><div class="a-m">남궁혁 · 지도 윤희연 · 국토계획 59(5), 39-58</div></div></div><div class="a-it in" style="--d:380ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.17208/jkpa.2024.08.59.4.38" target="_blank" rel="noopener">서울시의 가로경관이 공원 이용에 미치는 영향: 딥러닝 기반 의미론적 분할 기법을 활용하여</a><div class="a-m">이종현 · 지도 윤희연 · 국토계획 59(4), 38-52</div></div></div><div class="a-it in" style="--d:418ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.22669/krsa.2024.40.2.091" target="_blank" rel="noopener">고속철도가 지역 인구 이동에 미치는 영향 -지방소멸 위험과 인구 구조를 중심으로-</a><div class="a-m">김은지 · 지도 윤희연 · 지역연구 40(2), 91-106</div></div></div><div class="a-it in" style="--d:456ms"><div class="a-yr">2024<em class="ug">학부</em></div><div><a class="a-t" href="https://doi.org/10.9715/KILA.2024.52.1.087" target="_blank" rel="noopener">주거지역 가로환경 및 일상 걷기가 정신 건강에 미치는 영향-서울시 대상으로</a><div class="a-m">구본유 · 지도 윤희연 · 한국조경학회지 52(1), 87-100</div></div></div><div class="a-it in" style="--d:494ms"><div class="a-yr">2023<em class="ug">학부</em></div><div><a class="a-t" href="https://dx.doi.org/10.5532/KJAFM.2023.25.3.182" target="_blank" rel="noopener">Unveiling the Potential: Exploring NIRv Peak as an Accurate Estimator of Crop Yield at the County Level</a><div class="a-m">김대원 · 지도 류영렬 · Korean Journal of Agricultural and Forest Meteorology vol.25, no.3, pp. 182-196</div></div></div></div>
+</div>
+<p class="a-note">출처 S-Space (서울대학교 학술자료 저장소) · 학부 졸업논문은 각 학회지(DOI/KCI) 링크</p>
+</div>
+<script>window.__ARCH=null; /* 공개판: 학위논문 데이터(417편 · 저자/지도교수)는 제거했습니다. 원본 구조는 {P,PR,T:[[연도,학위코드,제목,저자,지도교수,S-Space uid],…],meta,trend} */</script>
+<script>
+(function(){
+var A=window.__ARCH; if(!A) return;
+var AMP=String.fromCharCode(38);
+var $=function(id){return document.getElementById(id)};
+function esc(s){ return String(s).replace(/[<>"]/g,function(c){ if(c==='<') return AMP+'lt;'; if(c==='>') return AMP+'gt;'; return AMP+'quot;'; }); }
+/* ---- chart ---- */
+(function(){
+  var tr=A.trend, bins=tr.bins, rows=tr.rows;
+  var W=900,H=430,L=40,R=190,T=28,B=38, iw=W-L-R, ih=H-T-B, mx=50;
+  var xs=bins.map(function(b,i){ return L+iw*i/(bins.length-1); });
+  function y(v){ return T+ih*(1-v/mx); }
+  var s='<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="연도별 논문 키워드 비중">';
+  [0,10,20,30,40,50].forEach(function(g){ var yy=y(g).toFixed(1); s+='<line class="grid" x1="'+L+'" x2="'+(L+iw)+'" y1="'+yy+'" y2="'+yy+'"/><text class="gl" x="'+(L-8)+'" y="'+(y(g)+4).toFixed(1)+'" text-anchor="end">'+g+'%</text>'; });
+  bins.forEach(function(b,i){ s+='<text class="xl" x="'+xs[i].toFixed(1)+'" y="'+(H-10)+'" text-anchor="middle">'+b+'</text>'; });
+  s+='<text class="gl" x="'+L+'" y="'+(T-6)+'">제목 주제어 비중 (%)</text>';
+  var labs=rows.map(function(r,ri){ var v=r.s[r.s.length-1]; return {ri:ri, y:y(v), v:v, k:r.k, up:r.up}; });
+  labs.sort(function(a,b){ return a.y-b.y; });
+  var gap=21; for(var i=1;i<labs.length;i++){ if(labs[i].y-labs[i-1].y<gap) labs[i].y=labs[i-1].y+gap; }
+  var over=labs[labs.length-1].y-(T+ih); if(over>0){ labs.forEach(function(l){ l.y-=over; }); }
+  var byRow={}; labs.forEach(function(l){ byRow[l.ri]=l; });
+  var order=rows.map(function(r,i){return i;}).sort(function(a,b){ return (rows[a].up?1:0)-(rows[b].up?1:0); });
+  order.forEach(function(ri){ var r=rows[ri], l=byRow[ri], up=r.up?' up':'';
+    var d=r.s.map(function(v,i){ return (i?'L':'M')+xs[i].toFixed(1)+' '+y(v).toFixed(1); }).join(' ');
+    s+='<g class="s"><path class="ln'+up+'" d="'+d+'" pathLength="1"><title>'+r.k+'</title></path>';
+    r.s.forEach(function(v,i){ s+='<circle class="pt'+up+'" cx="'+xs[i].toFixed(1)+'" cy="'+y(v).toFixed(1)+'" r="3"><title>'+r.k+' · '+bins[i]+' · '+v+'% ('+r.c[i]+'편)</title></circle>'; });
+    s+='<text class="lb'+up+'" x="'+(L+iw+12)+'" y="'+(l.y+4).toFixed(1)+'">'+r.k+' <tspan style="font-weight:700">'+l.v+'%</tspan></text></g>';
+  });
+  s+='</svg>';
+  $('trChart').innerHTML=s;
+})();
+/* ---- list ---- */
+var st={p:-1,d:-1,s:'old'}, ctrl=$('aCtrl'), list=$('aList');
+function chip(txt,on,attr){ return '<button type="button" class="chip'+(on?' on':'')+'" '+attr+'>'+txt+'</button>'; }
+function renderCtrl(){
+  var c='<div class="a-tabs">'+chip('전체',st.p===-1,'data-p="-1"');
+  A.P.forEach(function(p,i){ c+=chip(p,st.p===i,'data-p="'+i+'"'); });
+  c+='</div><div class="a-opts"><span class="grp">'+chip('전체',st.d===-1,'data-d="-1"')+chip('석사',st.d===0,'data-d="0"')+chip('박사',st.d===1,'data-d="1"')+'</span>';
+  c+='<span class="grp">'+chip('오래된순',st.s==='old','data-s="old"')+chip('최신순',st.s==='new','data-s="new"')+'</span></div>';
+  ctrl.innerHTML=c;
+}
+function inPeriod(yv,p){ var r=A.PR[p]; if(yv<r[0]) return false; if(r[1]>0){ if(yv>r[1]) return false; } return true; }
+function buildList(){
+  var idx=[];
+  A.T.forEach(function(t,i){ var ok=true; if(st.p>-1){ if(!inPeriod(t[0],st.p)) ok=false; } if(ok){ if(st.d>-1){ if(t[1]!==st.d) ok=false; } } if(ok) idx.push(i); });
+  idx.sort(function(a,b){ var d=A.T[a][0]-A.T[b][0]; if(d===0) d=a-b; return st.s==='old'?d:-d; });
+  $('phT').textContent=(st.p===-1?'전체':A.P[st.p])+(st.d===-1?'':' · '+(st.d===1?'박사':'석사'));
+  $('phN').textContent=idx.length+'편';
+  if(!idx.length){ list.innerHTML='<p class="a-empty">해당하는 논문이 없습니다.</p>'; return; }
+  var out='';
+  idx.forEach(function(i,n){ var t=A.T[i]; var dr=(t[1]===1); var an=(n<14)?' in" style="--d:'+(n*38)+'ms':'';
+    out+='<div class="a-it'+an+'"><div class="a-yr">'+t[0]+'<em class="'+(dr?'dr':'ma')+'">'+(dr?'박사':'석사')+'</em></div><div><a class="a-t" href="https://hdl.handle.net/10371/'+t[5]+'" target="_blank" rel="noopener">'+esc(t[2])+'</a><div class="a-m">'+esc(t[3])+(t[4]?' · 지도 '+esc(t[4]):'')+'</div></div></div>';
+  });
+  list.innerHTML=out; list.scrollTop=0;
+}
+var swT=null;
+function renderList(animate){
+  if(!animate){ buildList(); return; }
+  list.classList.add('sw');
+  if(swT) clearTimeout(swT);
+  swT=setTimeout(function(){ buildList(); requestAnimationFrame(function(){ list.classList.remove('sw'); }); },190);
+}
+ctrl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+  if(b.hasAttribute('data-p')) st.p=parseInt(b.getAttribute('data-p'),10);
+  else if(b.hasAttribute('data-d')) st.d=parseInt(b.getAttribute('data-d'),10);
+  else if(b.hasAttribute('data-s')) st.s=b.getAttribute('data-s');
+  renderCtrl(); renderList(true); });
+renderCtrl(); renderList(false);
+})();
+</script>

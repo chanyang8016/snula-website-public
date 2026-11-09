@@ -1,0 +1,55 @@
+﻿<style>
+.grad{--ink:#f2f3f5;--mid:#c3c5ca;--dim:#83868c;--line:#38322a;--card:#1a1613;--acc:#c99a4e;
+ color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;max-width:1020px;margin:0 auto}
+.grad *{box-sizing:border-box}
+.grad .g-lead{font-size:15px;line-height:1.85;color:var(--mid);margin:0 0 26px;max-width:58ch}
+.grad h3.g-h{margin:34px 0 6px;font-size:19px;font-weight:700;letter-spacing:-.015em}
+.grad h3.g-h:first-of-type{margin-top:0;margin-bottom:16px}
+.grad h3.g-h-bar{position:relative;padding-left:14px;margin-top:44px}
+.grad h3.g-h-bar::before{content:"";position:absolute;left:0;top:.15em;bottom:.15em;width:3px;background:var(--acc)}
+.grad p.g-d{margin:0 0 18px;font-size:13.5px;color:var(--dim);line-height:1.75}
+.grad .g-deg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+.grad .g-dc{border:1px solid var(--line);background:var(--card);padding:16px 18px 18px}
+.elementor-4632 .elementor-widget-text-editor .grad .g-dc{padding-left:20px !important;border-left:1px solid var(--line) !important}
+.elementor-4632 .elementor-widget-text-editor .grad .g-ask{padding-left:20px !important}
+.grad .g-dc h4{margin:0 0 3px;font-size:15px;font-weight:700}
+.grad .g-dc small{display:block;font-size:11px;color:var(--dim);letter-spacing:.06em;margin-bottom:12px}
+.grad .g-sem{margin-bottom:12px}
+.grad .g-sem b{display:block;font-size:10.5px;color:var(--dim);letter-spacing:.12em;margin-bottom:6px}
+.grad .g-sem ul{list-style:none;margin:0;padding:0}
+.grad .g-sem li{font-size:13px;line-height:1.6;color:#dcdde0;margin-bottom:3px}
+.grad .g-sem li em{font-style:normal;display:block;font-family:ui-monospace,Consolas,monospace;
+ font-size:9.5px;color:#71747a;letter-spacing:.02em}
+/* 참여 과정 — 세로로 확장되는 배치 */
+.grad .g-prog{margin-top:4px}
+.grad .g-p{position:relative;border-left:2px solid var(--line);padding:0 0 0 26px;margin-bottom:2px}
+.grad .g-p::before{content:"";position:absolute;left:-6px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--acc);border:2px solid var(--acc)}
+.grad .g-p.on::before{background:var(--acc);border-color:var(--acc)}
+.grad .g-p details{border-bottom:1px solid var(--line)}
+.grad .g-p summary{list-style:none;cursor:pointer;padding:15px 30px 15px 0;position:relative}
+.grad .g-p summary::-webkit-details-marker{display:none}
+.grad .g-p summary::after{content:"+";position:absolute;right:4px;top:14px;color:var(--acc);font-size:17px;font-weight:400}
+.grad .g-p details[open] summary::after{content:"−"}
+.grad .g-p .pn{font-size:16px;font-weight:700;letter-spacing:-.01em;display:inline;margin:0 12px 0 0;vertical-align:baseline}
+.grad .g-p .pm{font-size:12.5px;color:var(--dim);display:inline;vertical-align:baseline;white-space:normal}
+.grad .g-p .pm i{font-style:normal;color:var(--acc);margin-right:8px}
+.grad .g-p .pb{padding:0 0 18px}
+.grad .g-p .pb p{margin:0 0 10px;font-size:13.5px;line-height:1.8;color:#dcdde0}
+.grad .g-p .pb .who{font-size:12px;color:var(--dim);line-height:1.7;border-left:2px solid var(--line);padding-left:12px}
+.grad .g-p .pb ul{margin:8px 0 0;padding-left:16px}
+.grad .g-p .pb li{font-size:13px;line-height:1.75;color:#dcdde0}
+.grad .g-ask{margin:32px 0 0;background:var(--card);border:1px solid var(--line);padding:16px 18px;
+ font-size:13.5px;line-height:1.85;color:#dcdde0}
+.grad .g-ask b{color:var(--acc)}
+.grad .g-links{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 0}
+.grad .g-link{display:block;padding:22px 24px;border:1px solid var(--line);border-radius:10px;background:var(--card);text-decoration:none;color:var(--ink);transition:border-color .2s}
+.grad .g-link:hover{border-color:var(--acc)}
+.grad .g-link b{display:block;font-size:16px;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.grad .g-link span{font-size:12.5px;color:var(--dim)}
+.grad .g-link span::after{content:"→";margin-left:6px;color:var(--acc)}
+.elementor-4632 .elementor-widget-text-editor .grad .g-link,.elementor-4632 .elementor-widget-text-editor .grad .g-link b{color:var(--ink) !important;text-decoration:none !important}
+.elementor-4632 .elementor-widget-text-editor .grad .g-link span{color:var(--dim) !important}
+@media (max-width:720px){ .grad .g-deg{grid-template-columns:1fr}
+ .grad .g-links{grid-template-columns:1fr} }
+</style><h1 class="pg-h">대학원과정</h1><div class="grad"><p class="g-lead">조경학전공은 석사·박사 학위과정을 운영하며, 여기에 더해 <strong>네 개의 협동과정·융합전공·특성화대학원</strong>에 참여하고 있습니다. 조경을 중심에 두되 도시설계·데이터과학·환경기술로 영역을 넓혀 왔습니다.</p><h3 class="g-h g-h-bar">학위과정 교과목</h3><div class="g-deg"><div class="g-dc"><h4>석사과정</h4><small>MASTER</small><div class="g-sem"><b>1학기</b><ul><li>환경생태론<em>5271.515</em></li><li>현대조경이론<em>M1714.000100</em></li><li>전통환경설계론<em>5271.615A</em></li><li>식재계획과 설계<em>M1715.000300</em></li><li>환경영향평가론<em>5271.621</em></li><li>공공 옥외공간의 조달과 가치분석<em>M1715.000200</em></li><li>외부공간 기획과 브랜딩<em>M1715.001100</em></li></ul></div><div class="g-sem"><b>2학기</b><ul><li>환경미학<em>5271.517</em></li><li>도시생태학<em>5271.522</em></li><li>도시조경설계론<em>5271.524</em></li><li>옥외공간설계<em>5271.611</em></li><li>지속가능환경계획설계기법연구<em>5271.623</em></li><li>기후변화 생태계 취약성 및 적응계획<em>5271.624</em></li><li>현대조경사례연구<em>M1715.000400</em></li></ul></div></div><div class="g-dc"><h4>박사과정 · 협동과정 조경학</h4><small>DOCTORAL</small><div class="g-sem"><b>1학기</b><ul><li>재해분석과 생태복원계획<em>M2102.000300 / M1715.001600</em></li><li>생지화학 모델 기반 그린인프라스트럭처연구<em>M2195.000300 / M1715.001500</em></li><li>녹색복원특강<em>M2102.001200 / M1715.001200</em></li><li>조경 융복합 연구 세미나<em>M1715.001900</em></li></ul></div><div class="g-sem"><b>2학기</b><ul><li>환경미학특강<em>M2195.001200</em></li><li>정성적 경관연구방법론<em>951.736</em></li><li>기후변화적응계획론<em>951.738</em></li><li>조경 논문 작성<em>M2102.000400 / M1715.001400</em></li><li>그린인프라스트럭처 경제성평가<em>M2102.000500 / M1715.001300</em></li><li>지능형에코사이언스 개론<em>M2102.001100</em></li><li>지능형에코사이언스 실무응용<em>M2102.000900</em></li><li>조경 연구에서 과학적 글쓰기<em>M1715.001800</em></li></ul></div></div></div><h3 class="g-h g-h-bar">참여 협동과정 · 융합전공</h3><p class="g-d">조경학전공 교수진이 함께 만들고 가르치는 과정입니다.</p><div class="g-prog"><div class="g-p"><details><summary><span class="pn">협동과정 조경학</span><span class="pm">환경대학원과 공동 운영 · 박사과정</span></summary><div class="pb"><p>학부와 석사를 넘어 조경학 연구를 이어가려는 이들을 위해 1990년 환경대학원과 함께 개설했습니다. 지금까지 배출한 박사가 조경 학계와 실무의 중심에 있습니다.</p></div></details></div><div class="g-p"><details><summary><span class="pn">협동과정 도시설계학 전공</span><span class="pm">5개 학과·학부 공동 · 석·박사</span></summary><div class="pb"><p>국내외 도시설계 분야에서 활동할 전문가를 기르기 위해 1998년 설립됐습니다. 매 학기 도시설계 스튜디오와 세미나를 통해 통합적으로 도시 문제를 진단하고 푸는 훈련을 합니다.</p><div class="who">공과대학 건축학과 · 건설환경공학부<br>환경대학원 환경계획학과 · 환경조경학과<br>농업생명과학대학 조경·지역시스템공학부</div><ul><li>신도시와 구도심 도시설계</li><li>도시쇠퇴와 재생 전략</li><li>개발과 보존, 해외 도시개발</li><li>보행환경 개선과 건강도시</li><li>토지이용계획과 용도 변화</li><li>커뮤니티 설계와 주민참여 제도</li><li>조경이론과 생태환경계획</li></ul></div></details></div><div class="g-p"><details><summary><span class="pn">융합전공 스마트시티 글로벌 융합</span><span class="pm">국제기구·해외대학 연계</span></summary><div class="pb"><p>스마트시티와 기반기술 혁신을 이론으로 배우고, 도시문제·사회문제·국제개발문제에 실제로 적용해보는 과정입니다. 이론과 실무를 겸비한 글로벌 인재 양성을 목표로 합니다.</p><ul><li>현업 전문가와 교수가 함께 가르치는 입문 과목을 필수로 운영</li><li>국제기구·해외 대학과 연계한 사례 연구와 교육</li><li>매 학기 전공 워크숍으로 산업체와 학생이 교류</li></ul></div></details></div><div class="g-p"><details><summary><span class="pn">지능형 에코사이언스 특성화대학원</span><span class="pm">3개 트랙 운영</span></summary><div class="pb"><p>기후변화로 인한 환경 이슈에 선제적으로 대응할 인력을 기릅니다. 데이터 과학·기계학습·모니터링 기술을 환경 과학에 적용하는 방법을 배우며, 4차 산업혁명 요소기술(모니터링·예측·빅데이터 분석·플랫폼 구축)을 다룹니다.</p><ul><li>지능형 센싱 및 모니터링 <span style="color:#83868c">SNU-EPT</span></li><li>지능형 빅데이터 분석 <span style="color:#83868c">SNU-EDT</span></li><li>지능형 환경 서비스 <span style="color:#83868c">SNU-EST</span></li></ul></div></details></div></div><div class="g-ask"><b>입학 안내</b><br>· 석사·박사과정 입학은 서울대학교 입학처 홈페이지를 참조해 주세요.<br>· 협동과정 조경학 입학은 서울대학교 입학처 및 협동과정 조경학 홈페이지를 참조해 주세요.<br><br><b>문의</b> 전공사무실 <phone></div>
+<div class="g-links"><a class="g-link" href="https://admission.snu.ac.kr/graduate/general/notice" target="_blank" rel="noopener"><b>서울대학교 입학처</b><span>대학원 입학 안내</span></a><a class="g-link" href="https://ipla.snu.ac.kr/" target="_blank" rel="noopener"><b>협동과정 조경학</b><span>홈페이지</span></a></div></div>

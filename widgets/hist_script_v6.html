@@ -1,0 +1,76 @@
+﻿<div class="hs-count" style="display:none"></div>
+<script>
+(function(){
+ function ready(fn){ if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',fn); } else { fn(); } }
+ ready(function(){
+  var root=document.querySelector('.snula-hist.hs3'); if(!root) return;
+  var hasIO=('IntersectionObserver' in window);
+
+  /* ---------- 통계 오도미터 : 한 바퀴, 자리별 시차. 화면 밖으로 나가면 리셋 → 재진입 시 재생 ---------- */
+  var host=root.querySelector('.hs-stats');
+  if(host){
+   var bs=[].slice.call(host.querySelectorAll('b')); var strips=[];
+   bs.forEach(function(b){
+    var txt=b.textContent.trim(); b.textContent=''; b.classList.add('od');
+    var H=Math.ceil(parseFloat(getComputedStyle(b).fontSize)); if(!isFinite(H)){ H=28; } if(H<14){ H=28; }
+    var digits=0;
+    for(var i=0;i<txt.length;i++){
+     var ch=txt.charAt(i); var isDigit=false;
+     if(ch>='0'){ if(ch<='9'){ isDigit=true; } }
+     if(isDigit){
+      var wrap=document.createElement('span'); wrap.className='od-d'; wrap.style.height=H+'px';
+      var strip=document.createElement('span'); strip.className='od-s';
+      var target=parseInt(ch,10); var rows=10+target+1;
+      for(var r=0;r<rows;r++){ var it=document.createElement('i'); it.style.height=H+'px'; it.textContent=String(r%10); strip.appendChild(it); }
+      wrap.appendChild(strip); b.appendChild(wrap);
+      strips.push({el:strip,end:(rows-1)*H,delay:digits*90}); digits++;
+     } else {
+      var st=document.createElement('span'); st.className='od-c'; st.textContent=ch; b.appendChild(st);
+     }
+    }
+   });
+   function spin(){
+    strips.forEach(function(s){ s.el.style.transition='transform 2.4s cubic-bezier(.2,.8,.2,1) '+s.delay+'ms'; });
+    void host.offsetWidth;
+    setTimeout(function(){ strips.forEach(function(s){ s.el.style.transform='translateY(-'+s.end+'px)'; }); },80);
+   }
+   function reset(){
+    strips.forEach(function(s){ s.el.style.transition='none'; s.el.style.transform='translateY(0)'; });
+    void host.offsetWidth;
+   }
+   if(hasIO){
+    var ioS=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ spin(); } else { reset(); } }); },{threshold:.35});
+    ioS.observe(host);
+   } else { spin(); }
+  }
+
+  /* ---------- 시기 블록 스크롤 리빌 : 들어오면 .on, 나가면 제거(재생) ---------- */
+  var blocks=[].slice.call(root.querySelectorAll('.rv'));
+  if(hasIO){
+   var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('on'); } else { x.target.classList.remove('on'); } });
+   },{threshold:.18, rootMargin:'0px 0px -6% 0px'});
+   blocks.forEach(function(b){ io.observe(b); });
+  } else { blocks.forEach(function(b){ b.classList.add('on'); }); }
+
+  /* ---------- 풀블리드 밴드 : 컨테이너가 화면 중앙에 있지 않아도 뷰포트 폭에 맞춤 ---------- */
+  function fitBands(){ var rr=root.getBoundingClientRect(); var cw=document.documentElement.clientWidth;
+   root.style.setProperty('--bx',(-rr.left)+'px'); root.style.setProperty('--bw',cw+'px'); }
+  /* SCROLL / 화살표 클릭 → 다음 밴드로 부드럽게 */
+  var bands=[].slice.call(root.querySelectorAll(".hs-band"));
+  function toNext(){ var y=window.pageYOffset; var hh=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hh"))||96; var target=null;
+   for(var i=0;i<bands.length;i++){ var t=bands[i].getBoundingClientRect().top+window.pageYOffset-hh; if(t>y+40){ target=t; break; } }
+   if(target===null){ target=document.documentElement.scrollHeight; }
+   window.scrollTo({top:target,behavior:"smooth"}); }
+  [].forEach.call(root.querySelectorAll(".hs-next"),function(b){ b.addEventListener("click",function(){ toNext(); }); });
+  /* 헤더 높이(--hh)·인트로 높이(--ih)·푸터 스냅 */
+  function fitSnap(){
+   var g=document.querySelector("#gnb .gnb_container"); var hh=96; if(g){ var gr=g.getBoundingClientRect(); if(gr.bottom>0){ hh=Math.round(gr.bottom); } }
+   document.documentElement.style.setProperty("--hh",hh+"px");
+   var ft=document.querySelector(".elementor-location-footer"); if(!ft){ ft=document.querySelector("footer"); } if(ft){ ft.style.scrollSnapAlign="start"; }
+  }
+  fitBands(); fitSnap(); window.addEventListener('resize',function(){ fitBands(); fitSnap(); }); setTimeout(function(){ fitBands(); fitSnap(); },400); setTimeout(function(){ fitBands(); fitSnap(); },1500);
+  if('ResizeObserver' in window){ new ResizeObserver(fitBands).observe(document.body); }
+ });
+})();
+</script>

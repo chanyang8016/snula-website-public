@@ -1,0 +1,23 @@
+﻿<style id="snula-nw-dark">
+/* SNULA NEWS 글쓰기·버튼 다크 v1 */
+.default-editor .inner{border-bottom-color:rgba(245,242,236,.12)}
+.default-editor .row{background:transparent !important}
+.default-editor .row+.row{border-top:1px solid rgba(245,242,236,.08) !important}
+.default-editor .row .attr-name,.default-editor .row .attr-name .field-name,.default-editor .row .attr-name label{color:#9d978c !important;font-size:13px}
+.default-editor .row .attr-name .attr-required-text{color:#d9a05b}
+.default-editor .row .attr-value,.default-editor .row .attr-value label,.default-editor .attr-value-option{color:#c9c4ba !important}
+.default-editor .row .attr-value .description{color:#9d978c}
+.default-editor input[type=text],.default-editor input[type=email],.default-editor input[type=number],.default-editor input[type=date],.default-editor input[type=password],.default-editor select,.default-editor .kboard-content .editor-textarea,.default-editor textarea{background:#24201a !important;color:#f5f2ec !important;border:1px solid rgba(245,242,236,.14) !important;border-radius:0;box-shadow:none !important}
+.default-editor input:focus,.default-editor select:focus,.default-editor textarea:focus{border-color:#BE8134 !important;outline:none}
+.default-editor input[type=checkbox]{accent-color:#BE8134}
+.default-editor input[type=file]{color:#9d978c !important;width:auto}
+.default-editor input[type=file]::file-selector-button{background:transparent;color:#f5f2ec;border:1px solid rgba(245,242,236,.3);padding:5px 12px;margin-right:10px;cursor:pointer;font:inherit;font-size:12.5px}
+.default-editor input[type=file]::file-selector-button:hover{border-color:#BE8134;color:#d9a05b}
+.default-editor .kboard-control a,.default-editor .kboard-control button,.default-document .kboard-control a,.default-document .kboard-control button,.webzine-list .control a{background:transparent !important;color:#f5f2ec !important;border:1px solid rgba(245,242,236,.3) !important}
+.default-editor .kboard-control a:hover,.default-editor .kboard-control button:hover,.default-document .kboard-control a:hover,.default-document .kboard-control button:hover,.webzine-list .control a:hover{border-color:#BE8134 !important;color:#d9a05b !important}
+.default-editor .kboard-control [type=submit]{background:#BE8134 !important;border-color:#BE8134 !important;color:#1e1b17 !important;font-weight:600}
+.default-editor .kboard-control [type=submit]:hover{background:#d9a05b !important;border-color:#d9a05b !important;color:#1e1b17 !important}
+.webzine-list .board-search input,.webzine-list .board-search select{background:#24201a !important;color:#f5f2ec !important;border:1px solid rgba(245,242,236,.14) !important}
+.webzine-list .board-search button{background:transparent !important;color:#f5f2ec !important;border:1px solid rgba(245,242,236,.3) !important}
+.webzine-list .board-search button:hover{border-color:#BE8134 !important;color:#d9a05b !important}
+</style>

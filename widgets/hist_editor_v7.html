@@ -1,0 +1,203 @@
+﻿<style>
+.snula-hist.hs3{--ink:#f5f2ec;--dim:#9d978c;--line:#38322a;--card:#24201a;--acc:#BE8134;
+ color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;max-width:860px;margin:0 auto}
+.snula-hist.hs3 *{box-sizing:border-box}
+body.page-id-4630{overflow-x:hidden}
+/* 페이지 래퍼의 overflow:hidden이 스크롤 컨테이너가 되어 스냅이 뷰포트에 안 걸리는 문제 → 풀어준다 */
+body.page-id-4630 .elementor-4630{overflow:visible !important}
+.hs3 .hs-lead{color:var(--ink);font-size:26px;font-weight:600;line-height:1.55;letter-spacing:-.012em;text-align:center;max-width:820px;margin:0 auto 40px;word-break:keep-all}
+/* 통계 */
+.hs3 .hs-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 34px;border-radius:10px;overflow:hidden}
+.hs3 .hs-stats div{background:var(--card);padding:15px 10px 13px;text-align:center}
+.hs3 .hs-stats b{display:block;font-size:28px;font-weight:700;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.hs3 .hs-stats span{font-size:11.5px;color:var(--dim);letter-spacing:.03em}
+.snula-hist.hs3 .hs-stats .od{display:flex;justify-content:center;overflow:hidden;line-height:1}
+.snula-hist.hs3 .hs-stats .od-d{display:inline-block;overflow:hidden}
+.snula-hist.hs3 .hs-stats .od-s{display:flex;flex-direction:column;will-change:transform}
+.snula-hist.hs3 .hs-stats .od-s i{display:block;font-style:normal;line-height:1}
+.snula-hist.hs3 .hs-stats .od-c{display:inline-block;font-size:inherit !important;color:inherit !important;font-weight:inherit !important}
+/* 밴드(풀블리드) — 검정부터 시작, 크림/검정 교차 */
+.hs3 .hs-band{position:relative;width:var(--bw,100vw);margin-left:var(--bx,calc(50% - 50vw));padding:64px 0;background:#1e1b17;color:var(--ink);display:flex;align-items:center}
+.hs3 .hs-band.is-light{--ink:#1f1b16;--dim:#6d675e;--line:#d5d0c5;--acc:#8a5a1e;--card:#e2ded3;background:#edeae3}
+.hs3 .hs-in{width:100%;max-width:1160px;margin:0 auto;padding:0 32px}
+/* 시기 블록 */
+.hs3 .hs-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.hs3 .hs-band.alt .hs-grid .hs-fig{order:2}
+.hs3 .hs-fig{margin:0;position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--card)}
+.hs3 .hs-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hs3 .hs-fig figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;font-size:12.5px;letter-spacing:.03em;color:#f5f2ec;
+ background:linear-gradient(180deg,rgba(10,9,8,0) 0%,rgba(10,9,8,.55) 100%)}
+.hs3 .hs-yr{font-size:15px;font-weight:700;color:var(--acc);letter-spacing:.04em;line-height:1.5;margin:0 0 12px}
+.hs3 .hs-yr small{font-size:12.5px;font-weight:400;color:var(--dim);letter-spacing:.08em;margin-left:10px}
+.hs3 .hs-txt h3{margin:0 0 24px;font-size:34px;font-weight:700;letter-spacing:-.015em;line-height:1.25;color:var(--ink)}
+.hs3 ul.hs-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.hs3 ul.hs-list li{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px;line-height:1.6;color:var(--ink)}
+.hs3 ul.hs-list em{font-style:normal;color:var(--dim);font-size:14px;margin-right:14px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+/* 스크롤 리빌 — 화면 밖으로 나가면 리셋, 다시 들어오면 재생 */
+.hs3 .rv .hs-fig img{opacity:0;transform:scale(1.04);transition:opacity .9s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1)}
+.hs3 .rv .hs-yr,.hs3 .rv .hs-txt h3{opacity:0;transform:translateY(18px);transition:opacity .9s ease-out,transform .9s cubic-bezier(.16,1,.3,1)}
+.hs3 .rv ul.hs-list li{opacity:0;transform:translateY(14px);transition:opacity .8s ease-out,transform .8s cubic-bezier(.16,1,.3,1)}
+.hs3 .rv.on .hs-fig img{opacity:1;transform:scale(1);transition-delay:.1s}
+.hs3 .rv.on .hs-yr{opacity:1;transform:none;transition-delay:.15s}
+.hs3 .rv.on .hs-txt h3{opacity:1;transform:none;transition-delay:.26s}
+.hs3 .rv.on ul.hs-list li{opacity:1;transform:none}
+.hs3 .rv.on ul.hs-list li:nth-child(1){transition-delay:.42s}
+.hs3 .rv.on ul.hs-list li:nth-child(2){transition-delay:.56s}
+.hs3 .rv.on ul.hs-list li:nth-child(3){transition-delay:.70s}
+.hs3 .rv.on ul.hs-list li:nth-child(4){transition-delay:.84s}
+.hs3 .rv.on ul.hs-list li:nth-child(5){transition-delay:.98s}
+/* 한 번 스크롤 = 한 시기 : 뷰포트를 꽉 채우고 스냅 (700px 초과에서만) */
+@media (min-width:701px){
+ html{scroll-snap-type:y mandatory;scroll-padding-top:var(--hh,96px)}
+ .hs3 .hs-band{min-height:calc(100vh - var(--hh,96px));scroll-snap-align:start;scroll-snap-stop:always}
+}
+/* 첫 밴드 안의 페이지 제목 */
+.hs3 .hs-band .hs-title{position:absolute;left:0;right:0;top:34px;margin:0 !important;padding:0 32px !important;border:0 !important;font-size:22px !important;line-height:1.2 !important;letter-spacing:-.01em;color:var(--ink) !important;background:none !important;max-width:1160px;margin-left:auto !important;margin-right:auto !important}
+.hs3 .hs-band .hs-title::before,.hs3 .hs-band .hs-title::after{content:none !important;display:none !important}
+.hs3 .hs-next-first{width:auto;height:auto;bottom:18px;flex-direction:column;gap:8px;font-size:11px;letter-spacing:.22em;color:var(--dim)}
+.hs3 .hs-next-first span{display:block}
+.hs3 .hs-next i{display:block;width:12px;height:12px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);animation:hsBob 1.8s ease-in-out infinite}
+@keyframes hsBob{0%,100%{transform:translateY(0) rotate(45deg);opacity:.55}50%{transform:translateY(7px) rotate(45deg);opacity:1}}
+/* 각 시기 밴드 하단 화살표 */
+.hs3 .hs-next{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:44px;height:44px;border:0;background:none;color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.8;transition:opacity .3s,color .3s}
+.hs3 .hs-next:hover{opacity:1;color:var(--acc)}
+.hs3 .hs-next i{width:13px;height:13px;margin-top:-6px}
+@media (prefers-reduced-motion:reduce){.hs3 .hs-next i{animation:none}}
+/* 하단 링크 밴드 */
+.hs3 .hs-more{padding:64px 0}
+.hs3 .hs-more .hs-in{max-width:860px}
+.hs3 .hs-links{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 26px}
+.hs3 .hs-link{display:block;padding:26px 28px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);transition:border-color .2s}
+.hs3 .hs-link:hover{border-color:var(--acc)}
+.hs3 .hs-link b{display:block;font-size:19px;font-weight:700;margin-bottom:6px}
+.hs3 .hs-link span{font-size:12.5px;color:var(--dim)}
+.hs3 .hs-link span::after{content:"→";margin-left:6px;color:var(--acc)}
+.hs3 .hs-note{margin:0;font-size:11.5px;color:var(--dim);line-height:1.7}
+/* 페이지 CSS(.elementor-4630 … !important)를 이기기 위한 강제 색 지정 — 밴드 변수를 따르게 */
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-txt h3,
+.elementor-4630 .elementor-widget-text-editor .hs3 ul.hs-list li,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-link,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-link b,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-title{color:var(--ink) !important}
+.elementor-4630 .elementor-widget-text-editor .hs3 ul.hs-list em,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-yr small,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-link span,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-note,
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-next-first{color:var(--dim) !important}
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-lead{color:var(--ink) !important}
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-yr{color:var(--acc) !important}
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-link span::after{color:var(--acc) !important}
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-link{border-color:var(--line) !important;background:transparent !important;text-decoration:none !important}
+.elementor-4630 .elementor-widget-text-editor .hs3 .hs-link:hover{border-color:var(--acc) !important}
+@media (max-height:800px) and (min-width:701px){
+ .hs3 .hs-lead{font-size:21px;margin-bottom:24px}
+ .hs3 .hs-stats{margin-bottom:22px}
+ .hs3 .hs-stats div{padding:12px 8px 10px}
+ .hs3 .hs-stats b{font-size:24px}
+}
+@media (max-width:700px){
+ .hs3 .hs-stats{grid-template-columns:repeat(2,1fr)}
+ .hs3 .hs-band{padding:48px 0 52px;min-height:0}
+ .hs3 .hs-in{padding:0 20px}
+ .hs3 .hs-txt h3{font-size:24px}
+ .hs3 ul.hs-list li{font-size:15px;padding:11px 0}
+ .hs3 .hs-grid{grid-template-columns:1fr;gap:20px}
+ .hs3 .hs-band.alt .hs-grid .hs-fig{order:0}
+ .hs3 .hs-fig{aspect-ratio:16/10}
+ .hs3 .hs-txt h3{font-size:19px}
+ .hs3 .hs-links{grid-template-columns:1fr}
+ .hs3 .hs-lead{font-size:19px;margin-bottom:22px}
+ .hs3 .hs-next{display:none}
+ .hs3 .hs-band .hs-title{position:static;padding:0 20px 18px !important;font-size:20px !important}
+}
+@media (prefers-reduced-motion:reduce){
+ .hs3 .rv .hs-fig img,.hs3 .rv .hs-yr,.hs3 .rv .hs-txt h3,.hs3 .rv ul.hs-list li{opacity:1;transform:none;transition:none}
+}
+</style>
+<div class="snula-hist hs3">
+
+ <section class="hs-band hs-era rv hs-first">
+  <h1 class="pg-h hs-title">연혁</h1>
+  <div class="hs-in"><div class="hs-grid">
+   <figure class="hs-fig"><img src="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era1_1973-1024x691.jpg" srcset="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era1_1973-768x518.jpg 768w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era1_1973-1024x691.jpg 1024w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era1_1973.jpg 1476w" sizes="(max-width:700px) 92vw, 380px" alt="1973년 조경학과 춘계 야유회" loading="lazy"><figcaption>1973 춘계 야유회, 융건릉</figcaption></figure>
+   <div class="hs-txt">
+    <div class="hs-yr">1972–1979<small>창립</small></div>
+    <h3>국내 최초의 조경학과</h3>
+    <ul class="hs-list">
+     <li><em>1972.12</em>조경학과 설치계획안 문교부 제출</li>
+     <li><em>1973.01</em>초대 학과장 안건용 발령, 제1회 신입생 30명 모집</li>
+     <li><em>1973.03</em>서울대학교 조경학과 설치</li>
+     <li><em>1977.02</em>제1회 졸업생 14명 배출</li>
+    </ul>
+   </div>
+  </div></div>
+  <button type="button" class="hs-next hs-next-first" aria-label="다음 시기"><span>SCROLL</span><i></i></button>
+ </section>
+
+ <section class="hs-band hs-era rv is-light alt">
+  <div class="hs-in"><div class="hs-grid">
+   <figure class="hs-fig"><img src="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era2_1987-1024x679.jpg" srcset="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era2_1987-768x509.jpg 768w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era2_1987-1024x679.jpg 1024w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era2_1987.jpg 1600w" sizes="(max-width:700px) 92vw, 380px" alt="1987년 조경학관 전경" loading="lazy"><figcaption>1987 조경학관 전경, 수원캠퍼스</figcaption></figure>
+   <div class="hs-txt">
+    <div class="hs-yr">1980–1989<small>대학원</small></div>
+    <h3>학위과정의 확립</h3>
+    <ul class="hs-list">
+     <li><em>1980.11</em>대학원 석사과정 설치 승인</li>
+     <li><em>1983</em>생태조경학 석사과정 제1회 신입생 5명 모집</li>
+     <li><em>1985.06</em>한국조경학회 정기총회 및 학술발표회 개최</li>
+     <li><em>1986.03</em>수원캠퍼스 10동으로 이전</li>
+     <li><em>1986.12</em>조경학관 개관</li>
+    </ul>
+   </div>
+  </div></div>
+  <button type="button" class="hs-next" aria-label="다음 시기"><i></i></button>
+ </section>
+
+ <section class="hs-band hs-era rv">
+  <div class="hs-in"><div class="hs-grid">
+   <figure class="hs-fig"><img src="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era3_2001-1024x707.jpg" srcset="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era3_2001-768x530.jpg 768w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era3_2001-1024x707.jpg 1024w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era3_2001.jpg 1492w" sizes="(max-width:700px) 92vw, 380px" alt="2001년 여름답사" loading="lazy"><figcaption>2001 여름답사</figcaption></figure>
+   <div class="hs-txt">
+    <div class="hs-yr">1990–2004<small>확장</small></div>
+    <h3>박사과정 신설과 국제화</h3>
+    <ul class="hs-list">
+     <li><em>1990.03</em>환경대학원 협동과정 조경학 박사과정 신설</li>
+     <li><em>1998.06</em>총동창회 해외연수 장학사업 시작</li>
+     <li><em>2001</em>Damien Mugavin 교수 임용 — 서울대 최초 외국인 전임교수</li>
+     <li><em>2003.08</em>관악캠퍼스로 이전</li>
+    </ul>
+   </div>
+  </div></div>
+  <button type="button" class="hs-next" aria-label="다음 시기"><i></i></button>
+ </section>
+
+ <section class="hs-band hs-era rv is-light alt">
+  <div class="hs-in"><div class="hs-grid">
+   <figure class="hs-fig"><img src="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era4_2023-1024x768.jpg" srcset="https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era4_2023-768x576.jpg 768w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era4_2023-1024x768.jpg 1024w, https://<dev-host>/wp-content/uploads/sites/388/2026/09/hist_era4_2023.jpg 1440w" sizes="(max-width:700px) 92vw, 380px" alt="2023년 창립 50주년 등산" loading="lazy"><figcaption>2023 창립 50주년 등산</figcaption></figure>
+   <div class="hs-txt">
+    <div class="hs-yr">2005–2023<small>현재</small></div>
+    <h3>조경학전공</h3>
+    <ul class="hs-list">
+     <li><em>2005.03</em>조경·지역시스템공학부 조경학전공으로 통합 및 명칭 변경</li>
+     <li><em>2023.03</em>창립 50주년 — 졸업생 누적 1,553명</li>
+    </ul>
+   </div>
+  </div></div>
+  <button type="button" class="hs-next" aria-label="다음 시기"><i></i></button>
+ </section>
+
+ <section class="hs-band hs-more">
+  <div class="hs-in">
+   <p class="hs-lead">1973년 첫 신입생 30명으로 출발한 서울대학교 조경학전공은 2023년 창립 50주년을 맞았습니다. 국내 최초의 조경학과로서 지나온 50년의 주요 발자취입니다.</p>
+   <div class="hs-stats">
+    <div><b>50</b><span>창립 이후 (년)</span></div>
+    <div><b>1,181</b><span>학사</span></div>
+    <div><b>278</b><span>석사</span></div>
+    <div><b>94</b><span>박사</span></div>
+   </div>
+   <div class="hs-links">
+    <a class="hs-link" href="/faculty/"><b>교수진</b><span>People</span></a>
+    <a class="hs-link" href="/emeritus/"><b>명예교수 및 퇴직교수</b><span>People</span></a>
+   </div>
+   <p class="hs-note">출처 : 『서울대학교 조경학과 50주년 1973–2023』 기념 백서. 졸업생 수는 2023년 기준입니다.</p>
+  </div>
+ </section>
+</div>

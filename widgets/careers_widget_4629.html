@@ -1,0 +1,197 @@
+﻿<style>
+.snula-car{--ink:#f5f2ec;--mid:#c9c4ba;--dim:#9d978c;--line:rgba(245,242,236,.12);--card:#24201a;--acc:#BE8134;--acc2:#d9a05b;--oth:#5C6066;color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;max-width:1080px;margin:0 auto}
+.snula-car *{box-sizing:border-box}
+.snula-car .cr-sub{font-size:14px;color:var(--mid);line-height:1.8;margin:0 0 28px;white-space:nowrap}
+@media (max-width:900px){.snula-car .cr-sub{white-space:normal}}
+.snula-car .cr-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 40px}
+.snula-car .cr-stats div{padding:18px 8px 16px;text-align:center}
+.snula-car .cr-stats div + div{border-left:1px solid var(--line)}
+.snula-car .cr-stats b{display:block;font-size:24px;font-weight:700;line-height:1;margin-bottom:7px;font-variant-numeric:tabular-nums}
+.snula-car .cr-stats span{font-size:11.5px;color:var(--dim)}
+.snula-car .cr-wrap{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:48px;align-items:start}
+.snula-car .cr-figure{position:relative;min-width:0}
+.snula-car .cr-figure svg{display:block;width:100%;height:auto;overflow:visible}
+.snula-car .seg{cursor:pointer;transition:opacity .18s}
+.snula-car .seg .hit{pointer-events:all}
+.snula-car .seg:focus{outline:none}
+.snula-car .seg:focus-visible .bar{stroke:#fff;stroke-width:2}
+.snula-car .cr-figure.has-sel .seg:not(.on){opacity:.6}
+.snula-car .bar{transition:opacity .18s}
+.snula-car .lbl{font-size:12.5px;fill:#d4d0c8;pointer-events:none}
+.snula-car .lbl.on{fill:#fff;font-weight:700}
+.snula-car .pct{font-size:11px;fill:var(--dim);pointer-events:none;font-variant-numeric:tabular-nums}
+.snula-car .ctr-n{font-size:30px;font-weight:700;fill:var(--ink);font-variant-numeric:tabular-nums}
+.snula-car .ctr-t{font-size:11.5px;fill:var(--dim)}
+.snula-car .cr-hint{font-size:12px;color:var(--dim);margin:8px 0 0;text-align:center}
+.snula-car .cr-panel{border-top:1px solid var(--line);padding-top:18px;position:sticky;top:110px;transition:opacity .22s ease,transform .22s ease}
+.snula-car .cr-panel.sw{opacity:0;transform:translateY(6px)}
+.snula-car .cr-panel h3{margin:0 0 4px;font-size:19px;font-weight:700;letter-spacing:-.01em}
+.snula-car .cr-panel .pv{font-size:12.5px;color:var(--acc2);margin:0 0 14px;font-variant-numeric:tabular-nums}
+.snula-car .cr-panel .pd{font-size:14px;line-height:1.8;color:var(--mid);margin:0 0 18px}
+.snula-car .cr-panel h4{margin:16px 0 6px;font-size:11.5px;font-weight:600;letter-spacing:.08em;color:var(--dim)}
+.snula-car .cr-panel h4:first-of-type{margin-top:0}
+.snula-car .cr-panel .pf{font-size:13.5px;line-height:1.75;color:var(--ink);margin:0}
+.snula-car .cr-panel .pi{font-size:13px;line-height:1.8;color:var(--mid);margin:0;word-break:keep-all}
+.snula-car .cr-panel .pi + .pi{margin-top:6px}
+.snula-car .cr-panel .pi em{font-style:normal;color:var(--dim);margin-right:6px}
+.snula-car .cr-panel .pi a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(245,242,236,.25);padding-bottom:1px;transition:color .15s,border-color .15s}
+.snula-car .cr-panel .pi a:hover{color:var(--acc2);border-bottom-color:var(--acc2)}
+.snula-car .cr-toggle{margin:22px 0 0;text-align:right}
+.snula-car .cr-toggle button{font:inherit;font-size:12.5px;color:var(--dim);background:none;border:0;border-bottom:1px solid transparent;padding:6px 0;cursor:pointer}
+.snula-car .cr-toggle button:hover{color:var(--ink);border-bottom-color:var(--acc)}
+.snula-car table.cr-tbl{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}
+.snula-car table.cr-tbl th,.snula-car table.cr-tbl td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+.snula-car table.cr-tbl th{color:var(--dim);font-weight:600;font-size:11.5px;letter-spacing:.05em}
+.snula-car table.cr-tbl td.n{text-align:right;font-variant-numeric:tabular-nums;color:var(--acc2)}
+.snula-car .cr-qa{margin-top:40px;border-top:1px solid var(--line);padding-top:26px}
+.snula-car .cr-qa h3{margin:0 0 6px;font-size:18px;font-weight:700}
+.snula-car details.qa{border-bottom:1px solid var(--line)}
+.snula-car details.qa summary{cursor:pointer;list-style:none;padding:14px 26px 14px 0;font-size:15px;font-weight:600;position:relative;line-height:1.5}
+.snula-car details.qa summary::-webkit-details-marker{display:none}
+.snula-car details.qa summary::after{content:"+";position:absolute;right:4px;top:12px;color:var(--acc);font-size:17px;font-weight:400}
+.snula-car details.qa[open] summary::after{content:"−"}
+.snula-car details.qa p{margin:0 0 16px;font-size:14px;line-height:1.85;color:var(--mid)}
+.snula-car .cr-note{margin:28px 0 0;font-size:11.5px;color:var(--dim);line-height:1.7}
+@media (prefers-reduced-motion:reduce){.snula-car .cr-panel{transition:none}}
+@media (max-width:860px){
+.snula-car .cr-wrap{grid-template-columns:1fr;gap:22px}
+.snula-car .cr-panel{position:static}
+}
+@media (max-width:640px){
+.snula-car .cr-stats{grid-template-columns:repeat(2,1fr)}
+.snula-car .cr-stats div:nth-child(3){border-left:0}
+.snula-car .cr-stats div:nth-child(n+3){border-top:1px solid var(--line)}
+.snula-car .lbl{font-size:15px}
+.snula-car .pct{font-size:13px}
+}
+</style>
+<h1 class="pg-h">졸업생진로</h1>
+<div class="snula-car">
+<p class="cr-sub">1977년 첫 졸업생부터 2023년까지 1,553명이 사회로 나갔습니다. 막대를 누르면 분야와 진출 기관이 나옵니다.</p>
+<div class="cr-stats">
+<div><b>1,553</b><span>전체 졸업생</span></div>
+<div><b>1,181</b><span>학사</span></div>
+<div><b>278</b><span>석사</span></div>
+<div><b>94</b><span>박사</span></div>
+</div>
+<div class="cr-wrap">
+<div class="cr-figure" id="crFig"><svg id="crSvg" viewBox="0 0 660 660" role="img" aria-label="졸업생 진출 분야 방사형 그래프"></svg></div>
+<aside class="cr-panel" id="crPanel"></aside>
+</div>
+<div class="cr-toggle"><button type="button" id="crBtn">표로 보기</button></div>
+<div id="crTblBox" hidden></div>
+<div class="cr-qa">
+<h3>궁금한 것들</h3>
+<details class="qa"><summary>조경학과를 나오면 꼭 조경 일을 해야 하나요?</summary><p>아닙니다. 조경 분야로 가는 졸업생이 32%로 가장 많지만, 나머지 68%는 다른 길을 갑니다. 공간과 환경을 읽고 계획하는 훈련은 도시·부동산·금융·연구처럼 넓은 곳에서 쓰입니다. 실제로 방송, 법률, 의료로 간 선배도 있습니다.</p></details>
+<details class="qa"><summary>조경 일은 설계만 하나요?</summary><p>설계는 그중 하나입니다. 설계사무소 외에 시공을 맡는 건설회사, 공원과 도시를 관리하는 공공기관과 공사, 기술을 다루는 엔지니어링 회사가 모두 조경 분야입니다. 해외 설계사무소에서 일하는 동문도 있습니다.</p></details>
+<details class="qa"><summary>대학원에 많이 가나요?</summary><p>적지 않습니다. 지금까지 석사 278명, 박사 94명이 배출됐고, 우수졸업생 명단에도 대학원 진학이 자주 보입니다. 연구·교수 분야로 가려면 대학원 과정을 거치는 경우가 많습니다.</p></details>
+<details class="qa"><summary>'기타 34%'는 뭔가요?</summary><p>백서가 조경과 직접·간접으로 관련된 직업을 먼저 분류하고, 그 밖의 업종을 한데 모은 항목입니다. 공무원, 창업, 진학 등이 여기에 들어갑니다. 세부 내역은 백서에 나와 있지 않아 이 그래프에서도 나누지 않았습니다.</p></details>
+</div>
+<p class="cr-note">출처 : 『서울대학교 조경학과 50주년 1973–2023』 기념 백서 46–48쪽. 비율은 백서의 졸업생 직업 분포 조사 기준이며, 진출 기관은 백서에 실린 우수졸업생 명단과 본문에서 가져왔습니다.</p>
+</div>
+<script>
+(function(){
+ var AMP=String.fromCharCode(38);
+
+ var AMPX=String.fromCharCode(38);
+ var U={
+  gaone:"http://gaone-landscape.com/",grouphan:"http://www.grouphan.co.kr/",dongsimwon:"https://www.dongsimwon.com/",designl:"https://designl.kr/",dsquare:"http://www.dsquare.co.kr/",labdh:"https://dhscape.com/",mohanong:"https://www.mohanong.co.kr/",beoh:"http://www.beoh.co.kr/",bigbysmall:"https://bigbysmall.creatorlink.net/",anpark:"https://anpark.net/",hld:"https://www.hldgroup.net/",aliveus:"https://www.aliveus.net/",subdivision:"https://subdivision.kr/",satla:"http://www.satla.co.kr/",openness:"http://www.openness.kr/",cadesign:"http://www.cadesign.co.kr/",urien:"https://www.urien.co.kr/",hea:"https://www.h-e-a.co.kr/",jwl:"https://www.jwlandscape.net/",knl:"http://designknl.com/",placeon:"https://www.youtube.com/@place_onstudio1309",hargreaves:"https://www.hargreaves.com/",jcfo:"https://www.fieldoperations.net/",ojb:"https://www.ojb.com/",pwp:"https://www.pwpla.com/",som:"https://www.som.com/",stoss:"https://www.stoss.net/",swa:"https://www.swagroup.com/",west8:"https://www.west8.com/",
+  samsung:"https://www.samsungcnt.com/",gs:"https://www.gsenc.com/",posco:"https://www.poscoenc.com/",hdec:"https://www.hdec.kr/",daewoo:"https://www.daewooenc.com/",lotte:"https://www.lottecon.co.kr/",hanwha:"https://www.hwenc.co.kr/",hec:"https://www.hec.co.kr/",dl:"https://www.dlenc.co.kr/",
+  lh:"https://www.lh.or.kr/",sh:"https://www.i-sh.co.kr/",kwater:"https://www.kwater.or.kr/",ekr:"https://www.ekr.or.kr/",ex:"https://www.ex.co.kr/",molit:"https://www.molit.go.kr/",forest:"https://www.forest.go.kr/",me:"https://www.me.go.kr/",seoul:"https://www.seoul.go.kr/",
+  snu:"https://www.snu.ac.kr/",uos:"https://www.uos.ac.kr/",skku:"https://www.skku.edu/",kangwon:"https://www.kangwon.ac.kr/",gnu:"https://www.gnu.ac.kr/",kongju:"https://www.kongju.ac.kr/",hknu:"https://www.hknu.ac.kr/",dankook:"https://www.dankook.ac.kr/",donga:"https://www.donga.ac.kr/",yu:"https://www.yu.ac.kr/",jnu:"https://www.jnu.ac.kr/",cju:"https://www.cju.ac.kr/",nuch:"https://www.nuch.ac.kr/",kit:"https://www.kit.ac.kr/",shingu:"https://www.shingu.ac.kr/",seowon:"https://www.seowon.ac.kr/",harvard:"https://www.harvard.edu/",msu:"https://msu.edu/",tamu:"https://www.tamu.edu/",ubc:"https://www.ubc.ca/",usu:"https://www.usu.edu/",
+  krihs:"https://www.krihs.re.kr/",si:"https://www.si.re.kr/",gri:"https://www.gri.re.kr/",ii:"https://www.ii.re.kr/",auri:"https://www.auri.re.kr/",kict:"https://www.kict.re.kr/",krei:"https://www.krei.re.kr/",kcti:"https://www.kcti.re.kr/",kei:"https://www.kei.re.kr/",kdi:"https://www.kdi.re.kr/",
+  mirae:"https://securities.miraeasset.com/",sds:"https://www.samsungsds.com/"
+ };
+ var D=[
+  {k:"조경",v:32,d:"설계사무소, 건설회사, 공공기관까지 조경 일을 직접 하는 분야입니다. 가장 많은 동문이 여기 있습니다.",
+   f:"조경설계 · 조경시공 · 공원녹지 행정 · 그린인프라 엔지니어링",
+   i:[
+    ["설계",[["가원조경","gaone"],["그룹한 어소시에이트","grouphan"],["동심원조경","dongsimwon"],["디자인 엘","designl"],["디스퀘어","dsquare"],["랩디에이치(Lab D+H)","labdh"],["뭐하농","mohanong"],["비오이엔씨","beoh"],["빅바이스몰","bigbysmall"],["안팎","anpark"],["에이치엘디(HLD)","hld"],["얼라이브어스","aliveus"],["서브디비전","subdivision"],["서안조경","satla"],["스튜디오 오픈니스","openness"],["CA조경","cadesign"],["우리엔디자인펌","urien"],["에이치이에이(HEA)","hea"],["제이더블유 랜드스케이프","jwl"],["케이앤엘(KnL) 환경디자인","knl"],["플레이스온","placeon"],["Hargreaves Associates","hargreaves"],["James Corner Field Operations","jcfo"],["OJB","ojb"],["Peter Walker "+AMPX+" Associates","pwp"],["SOM","som"],["Stoss Landscape Urbanism","stoss"],["SWA Group","swa"],["West 8","west8"]]],
+    ["시공",[["삼성물산","samsung"],["GS건설","gs"],["포스코이앤씨","posco"],["현대건설","hdec"],["대우건설","daewoo"],["롯데건설","lotte"],["한화 건설부문","hanwha"],["현대엔지니어링","hec"],["DL이앤씨","dl"]]],
+    ["공공",[["한국토지주택공사(LH)","lh"],["서울주택도시공사(SH)","sh"],["한국수자원공사(K-water)","kwater"],["한국농어촌공사","ekr"],["한국도로공사","ex"],["국토교통부","molit"],["산림청","forest"],["환경부","me"],["서울시","seoul"]]]
+   ]},
+  {k:"교수",v:9,d:"대학에서 가르치고 연구합니다. 국내뿐 아니라 해외 대학에도 동문이 있습니다.",
+   f:"대학 교수 · 대학원 진학 후 연구자",
+   i:[["",[["서울대학교","snu"],["서울시립대학교","uos"],["성균관대학교","skku"],["강원대학교","kangwon"],["경상국립대학교","gnu"],["공주대학교","kongju"],["국립한경대학교","hknu"],["단국대학교","dankook"],["동아대학교","donga"],["영남대학교","yu"],["전남대학교","jnu"],["청주대학교","cju"],["한국전통문화대학교","nuch"],["경남정보대학교","kit"],["신구대학교","shingu"],["서원대학교","seowon"],["Harvard University","harvard"],["Michigan State University","msu"],["Texas A"+AMPX+"M University","tamu"],["University of British Columbia","ubc"],["University of Nevada"],["Utah State University","usu"]]]]},
+  {k:"연구",v:8,d:"국책연구원과 기업 연구소에서 정책과 기술을 연구합니다.",
+   f:"국책·공공 연구기관 · 기업 연구소",
+   i:[["",[["국토연구원","krihs"],["서울연구원","si"],["경기연구원","gri"],["강원연구원"],["수원연구원"],["인천연구원","ii"],["건축공간연구원(Auri)","auri"],["한국건설기술연구원","kict"],["한국농촌경제연구원","krei"],["한국문화관광연구원","kcti"],["한국토지주택연구원"],["한국환경연구원(KEI)","kei"],["한국개발연구원(KDI)","kdi"]]]]},
+  {k:"금융보험",v:4,d:"부동산금융·자산운용처럼 땅과 공간을 다루는 금융 쪽입니다.",
+   f:"부동산금융 · 자산운용 · 보험",
+   i:[["",[["미래에셋증권","mirae"]]]]},
+  {k:"도시건축",v:3,d:"도시설계·건축설계 등 인접 분야입니다. 조경과 함께 일하는 경우가 많습니다.",
+   f:"도시설계 · 건축설계 · 도시계획",i:[]},
+  {k:"의료",v:3,d:"졸업 후 진로를 바꾼 경우입니다.",f:"의료·보건",i:[]},
+  {k:"부동산",v:2,d:"개발·컨설팅 분야입니다.",f:"부동산 개발 · 컨설팅",i:[]},
+  {k:"전기전자",v:2,d:"IT·전자 기업으로 간 경우입니다.",f:"IT · 전자",i:[["",[["삼성SDS","sds"]]]]},
+  {k:"회계",v:1,d:"회계·세무 분야입니다.",f:"회계 · 세무",i:[]},
+  {k:"방송언론",v:1,d:"미디어·콘텐츠 분야입니다.",f:"방송 · 언론 · 콘텐츠",i:[["",[["유튜버·크리에이터"]]]]},
+  {k:"법무법인",v:1,d:"법률 분야입니다.",f:"법률",i:[]},
+  {k:"기타",v:34,o:1,d:"백서가 조경과 직접·간접으로 관련된 직업을 먼저 분류하고, 그 밖의 업종을 한데 모은 항목입니다. 공무원·창업·진학 등이 들어갑니다.",f:"공무원 · 창업 · 진학 등",i:[]}
+ ];
+ var svg=document.getElementById("crSvg"), fig=document.getElementById("crFig"),
+     panel=document.getElementById("crPanel"), btn=document.getElementById("crBtn"), tb=document.getElementById("crTblBox");
+ if(!svg) return;
+ var CX=330,CY=330,R0=74,BMAX=168,MAXV=34,LR=262,N=D.length,STEP=360/N,ARC=19;
+ var NS="http://www.w3.org/2000/svg";
+ function pol(r,a){var t=(a-90)*Math.PI/180;return[CX+r*Math.cos(t),CY+r*Math.sin(t)];}
+ function seg(r1,r2,a1,a2){
+  var p1=pol(r2,a1),p2=pol(r2,a2),p3=pol(r1,a2),p4=pol(r1,a1);
+  return "M"+p1[0]+" "+p1[1]+"A"+r2+" "+r2+" 0 0 1 "+p2[0]+" "+p2[1]+"L"+p3[0]+" "+p3[1]+"A"+r1+" "+r1+" 0 0 0 "+p4[0]+" "+p4[1]+"Z";
+ }
+ function el(n,at){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);return e;}
+ var ring=el("circle",{cx:CX,cy:CY,r:R0,fill:"#1e1b17",stroke:"#3a3530","stroke-width":1});
+ svg.appendChild(ring);
+ var t1=el("text",{x:CX,y:CY-4,"text-anchor":"middle","class":"ctr-n"});t1.textContent="1,553";svg.appendChild(t1);
+ var t2=el("text",{x:CX,y:CY+16,"text-anchor":"middle","class":"ctr-t"});t2.textContent="명의 졸업생";svg.appendChild(t2);
+ var TRK=el("g",{});D.forEach(function(d,i){var mid=i*STEP;TRK.appendChild(el("path",{d:seg(R0+3,R0+3+BMAX,mid-ARC/2,mid+ARC/2),fill:"#26221d"}));});svg.appendChild(TRK);
+ var segs=[];
+ D.forEach(function(d,i){
+  var mid=i*STEP, a1=mid-ARC/2, a2=mid+ARC/2;
+  var len=Math.max(4, d.v/MAXV*BMAX);
+  var g=el("g",{"class":"seg",tabindex:"0",role:"button","aria-label":d.k+" "+d.v+"퍼센트"});
+  g.appendChild(el("path",{d:seg(R0+3,R0+3+BMAX,a1,a2),fill:"transparent","class":"hit"}));
+  var p=el("path",{d:seg(R0+3,R0+3+len,a1,a2),fill:d.o?"#5C6066":"#BE8134","class":"bar"});
+  var ti=el("title");ti.textContent=d.k+" "+d.v+"%";p.appendChild(ti);
+  g.appendChild(p);
+  var lp=pol(LR,mid), anchor="middle", dy=4;
+  if(mid<=10) dy=-4; if(mid>=350) dy=-4;
+  if(mid>170){ if(mid<190) dy=14; }
+  var tx=el("text",{x:lp[0],y:lp[1]+dy,"text-anchor":anchor,"class":"lbl"});tx.textContent=d.k;
+  var px=el("text",{x:lp[0],y:lp[1]+dy+15,"text-anchor":anchor,"class":"pct"});px.textContent=d.v+"%";
+  g.appendChild(tx);g.appendChild(px);
+  g.addEventListener("click",function(){sel(i,true);});
+  g.addEventListener("keydown",function(e){ if(e.key==="Enter"){e.preventDefault();sel(i,true);return;} if(e.key===" "){e.preventDefault();sel(i,true);} });
+  svg.appendChild(g);segs.push({g:g,t:tx});
+ });
+ var cur=-1, swT=null;
+ function render(i){
+  var d=D[i];
+  var h='<h3>'+d.k+'</h3><p class="pv">졸업생의 '+d.v+'%</p><p class="pd">'+d.d+'</p>';
+  h+='<h4>진출 분야</h4><p class="pf">'+d.f+'</p>';
+  if(d.i.length){ h+='<h4>진출 기관</h4>';
+   d.i.forEach(function(grp){ var names=grp[1].map(function(x){ if(x[1]){ return '<a href="'+U[x[1]]+'" target="_blank" rel="noopener">'+x[0]+'</a>'; } return x[0]; }).join(', ');
+    h+='<p class="pi">'+(grp[0]?'<em>'+grp[0]+'</em>':'')+names+'</p>'; }); }
+  panel.innerHTML=h;
+ }
+ function sel(i,anim){
+  if(i===cur) return; cur=i;
+  segs.forEach(function(s,j){ s.g.classList.toggle("on",j===i); s.t.classList.toggle("on",j===i); });
+  fig.classList.add("has-sel");
+  if(!anim){ render(i); return; }
+  panel.classList.add('sw'); if(swT) clearTimeout(swT);
+  swT=setTimeout(function(){ render(i); requestAnimationFrame(function(){ panel.classList.remove('sw'); }); },190);
+ }
+ sel(0,false);
+ if(btn){
+  var open=false;
+  btn.addEventListener("click",function(){
+   open=!open; tb.hidden=!open; btn.textContent=open?"표 닫기":"표로 보기";
+   if(open){ if(!tb.innerHTML){
+    var rows=D.slice().sort(function(a,b){return b.v-a.v;}).map(function(d){return "<tr><td>"+d.k+"</td><td class='n'>"+d.v+"%</td></tr>";}).join("");
+    tb.innerHTML='<table class="cr-tbl"><thead><tr><th>분야</th><th style="text-align:right">비율</th></tr></thead><tbody>'+rows+'</tbody></table>';
+   } }
+  });
+ }
+})();
+</script>
